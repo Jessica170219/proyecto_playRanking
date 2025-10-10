@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from '../Images/PlayRanking_logo.png';
 import '../Stylesheets/HomePage.css';
-import Foto from '../Images/mujer-jugando-al-padel.jpg';
 
 const HomePage = ({ onNavigate }) => {
     

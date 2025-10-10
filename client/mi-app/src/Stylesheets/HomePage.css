@@ -21,7 +21,7 @@
 
 /* Estilo del logo*/
 .logo-playRanking {
-  height: 200px;
+  height: 90px;
   
 }
 
@@ -112,6 +112,9 @@
   .container {
     flex-direction: column;
     align-items: center;
+  }
+  .logo-playRanking{
+    width:70%;
   }
 
   .main-imagen, .main-container {

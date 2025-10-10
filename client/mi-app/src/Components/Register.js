@@ -1,4 +1,7 @@
 import react, { useState } from "react";
+import '../Stylesheets/Register.css';
+import '../Stylesheets/HomePage.css';
+import Logo from '../Images/PlayRanking_logo.png';
 
 const Register = ({ onSwitch }) => {
     const [nombre, setNombre] = useState(''); 
@@ -20,28 +23,85 @@ const Register = ({ onSwitch }) => {
     }
 
     return (
-        <form className='form-register' onSubmit={handleRegister}>
-            <h1>Registro</h1>
-            
-            <label>Nombre:</label>
-            <input type='text' placeholder="Nombre" value={nombre}></input>
-            <label>Apellidos:</label>
-            <input type='text' placeholder='Apellidos' value={apellido} />
-            <label>Email:</label>
-            <input type='email' placeholder="Email" value={email} />
-            <label>Contraseña:</label>
-            <input type='password' placeholder="Contraseña" value={contraseña} />
-            <label>Confirmación Contraseña:</label>
-            <input type='password' placeholder='Confirma contraseña' value={confContraseña} />
-            <label>Telefono:</label>
-            <input type='number' placeholder='Número de telefono' value={telefono} />
-            <button type='submit'>Registrarse</button>
+        <div className='container'>
+            <main className='main'>
+                <form className='form-register' onSubmit={handleRegister}>
+                    <div className='logo-header'>
+                        <img
+                          className='logo-mini'
+                          src={ Logo }
+                          alt='Logo de PlayRanking'
+                         />
+                                    
+                    </div>
+                    
+                    
+                    <label>Nombre:</label>
+                    <input className='register-input'
+                      type='text'
+                      placeholder="Nombre"
+                      value={nombre}
+                      onChange={e => setNombre(e.target.value)}
+                      required
+                    ></input>
+                    <label>Apellidos:</label>
+                    <input
+                      className='register-input'
+                      type='text'
+                      placeholder='Apellidos'
+                      value={apellido}
+                      onChange={e => setApellido(e.target.value)} 
+                      required
+                      />
+                    <label>Email:</label>
+                    <input
+                      className='register-input'
+                      type='email'
+                      placeholder="Email"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)} 
+                      required
+                      />
+                    <label>Contraseña:</label>
+                    <input
+                      className='register-input'
+                      type='password'
+                      placeholder="Contraseña"
+                      value={contraseña}
+                      onChange={e => setContraseña(e.target.value)} 
+                      required
+                      />
+                    <label>Confirmación Contraseña:</label>
+                    <input
+                      className='register-input'
+                      type='password'
+                      placeholder='Confirma contraseña'
+                      value={confContraseña} 
+                      onChange={e => setConfContraseña(e.target.value)}
+                      required
+                      />
+                    <label>Telefono:</label>
+                    <input
+                      className='register-input'
+                      type='number'
+                      placeholder='Número de telefono'
+                      value={telefono} 
+                      onChange={e => setTelefono(e.target.value)}
+                      required
+                      />
+                    <button className='homepage-btn' type='submit'>Registrarse</button>
 
-            <p>
-                ¿Ya tienes cuenta? <button type='button' onClick={()=> onSwitch('login')}>Iniciar sesión</button>
-            </p>
-            
-       </form> 
+                    <p className='yes-account'>
+                        ¿Ya tienes cuenta?
+                    <button
+                      className='login-btn'
+                      type='button'
+                      onClick={() => onSwitch('login')}>Iniciar sesión</button>
+                    </p>
+                
+                 </form>
+            </main>    
+            </div>
     )
 }
 
