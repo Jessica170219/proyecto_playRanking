@@ -1,64 +1,78 @@
-import React from "react";
-import '../Stylesheets/HomePage.css'; 
+import {React, useState} from "react";
 import '../Stylesheets/Login.css';
-import Logo from '../Images/PlayRanking_logo.png';
-import { useState } from "react";
+import Ilustracion from '../Images/ilustracion-padel.jpg';
+import { validarEmail } from "../Utils/validations"; 
+import ForgotPassword from "./ForgotPassword.js";
 
-const Login = ({ onSwitch }) => {
-    const [email, setEmail] = useState(''); 
-    const [contraseña, setContraseña] = useState(''); 
 
-    //Funcion handleLogin
-    const handleLogin = e => {
-        e.preventDefault();
+const Login = ({ onNavigate }) => {
+  const [email, setEmail] = useState('');
+  const [contraseña, setContraseña] = useState('');
+
+  //Funcion handleLogin
+  const handleLogin = e => {
+    e.preventDefault();
+
+    //Validacion de email
+            if (!validarEmail(email)) {
+                alert('El email no es válido');
+                return; 
+            }
         
 
-        //AQUI VA LA VALIDACION Y LLAMADA AL BACKEND 
-    }
+    //AQUI VA LA VALIDACION Y LLAMADA AL BACKEND 
+  }
 
-    return (
+  return (
       <div className='container'>
-        <main className="main">
-          
+      <div className='login-panel'>
+         <div className='login-content' >
+          <h2 className='login-title'>Accede a PlayRanking</h2>
+          <p className="panel-text">¡Nos alegra verte de nuevo!</p>
+        </div>
+
           <form className='form-login' onSubmit={handleLogin}>
-            <div className='logo-header'>
-                <img
-                    className='logo-mini'
-                    src={ Logo }
-                    alt='Logo de PlayRanking'
-              />
-                
-            </div>
-              <label>Email:</label>
               <input
-                className='login-input'
+                className='form-input'
                 type='email'
-                placeholder='Ingresa tu Email'
+                placeholder='Email'
                 value={email}
                 onChange={e=>setEmail(e.target.value)}
-                required/>
+              required />
             
-              <label>Contraseña:</label>
               <input
-                className='login-input'
+                className='form-input'
                 type='password'
-                placeholder='Ingresa tu contraseña'
+                placeholder='Contraseña'
                 value={contraseña}
                 onChange={e=>setContraseña(e.target.value)}
                   required
-                />
-            
-              <button className='homepage-btn' type='submit'>Entrar</button>
+          />
+            <div className='form-linea'>
+              <a href='/forgotpassword' className='form-link'
+                 onClick={e=>{e.preventDefault();
+                  onNavigate(ForgotPassword);
+                 }}>¿Has olvidado tu contraseña?</a>
+            </div>
+             <button className='homepage-btn' type='submit'>Entrar</button>
+          </form>
 
-            <p className='no-account'>
-            ¿No tienes cuenta?
+          <div className='panel-register'>
+                 ¿No tienes cuenta?
             <button
-            className='register-btn'  type='button' onClick={() => onSwitch('register')}>Regístrate</button>
-            </p>
-          </form> 
-        </main>
+            className='register-btn'  type='button' onClick={() => onNavigate('register')}>Regístrate</button>
+      
+          </div>
+      
+        </div>
+      
+        <div className='login-imagen'>
+          <img src={Ilustracion }
+            alt='Ilustracion padel'/>
+      </div>
     </div>
-    )
-}
+  )
+};
+
 
 export default Login; 

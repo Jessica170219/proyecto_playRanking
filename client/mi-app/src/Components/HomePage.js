@@ -1,63 +1,61 @@
 import React from "react";
-import Logo from '../Images/PlayRanking_logo.png';
+import Logo from '../Images/logo-snfondo.png';
 import '../Stylesheets/HomePage.css';
+import Contact from "./Contact.js";
 
 const HomePage = ({ onNavigate }) => {
-    
-    
     return (
-        <div className='homepage-container'>
-            <header className='homepage-header'> {/*Cabecera con logo*/}
-                <img
-                    className='logo-playRanking'
-                    src={ Logo }
-                    alt='Logo de PlayRanking'
-                />
-            </header>
 
-            <main className='main'>
-                {/*Zona principal con explicación y botones de accion*/}
-
-                <div className='main-container'>
-                     <h2 className='homepage-title'> ¿Que es PlayRanking? </h2>
-                        <p className='homepage-text'>  ¿Listo para llevar tu juego al siguiente nivel? Nuestra plataforma está pensada para jugadores que quieren competir, sumar puntos y alcanzar lo más alto del ranking. Solo necesitas registrarte, encontrar un compañero y formar tu pareja.</p>
+        <div className="homepage">
+            <nav className="homepage-nav">
+                <img src={Logo} alt="PlayRanking" className="nav-logo" />
+                <div className="nav-links">
+                    <button className="nav-btn" onClick={() => onNavigate('login')}>Iniciar sesión</button>
+                    <button className="nav-btn primary" onClick={() => onNavigate('register')}>Registrarse</button>
                 </div>
-                    
+            </nav>
 
-                <div className='main-container'>
-                    
-                    <h2 className='homepage-title'> ¿Como funciona el torneo? </h2>
-                    <ul className='homepage-text'>
-                        <li>Forma tu dupla y regístrense al torneo antes del cierre de inscripciones.</li>
-                        <li>Un formato todos contra todos, con partidos 2 vs 2 donde cada victoria cuenta.</li>
-                        <li>Máximo 9 parejas por torneo para asegurar una experiencia ágil y emocionante.</li>
-                        <li>Los partidos se asignan automáticamente con fechas aleatorias, ¡prepárate para competir!</li>
-                    </ul>
+            <main className="homepage-main">
+                <h1 className="homepage-title">
+                    JUEGA, COMPITE Y<br />
+                    LIDERA EL RANKING
+                </h1>
+                <p className="homepage-sub">
+                    Organiza partidos, sigue tu progreso y asciende posiciones en el ranking de pádel, con PlayRanking. La plataforma donde cada partido suma.
+                </p>
+                <div className="hero-actions">
+                    <button className="hero-btn primary" onClick={() => onNavigate('register')}>Crear cuenta</button>
+                    <button className="hero-btn" onClick={() => onNavigate('login')}>Ver ranking</button>
                 </div>
-
-                <div className='main-container'>
-                    
-                    <h2 className='homepage-title'> Puntos, rankings y estadísticas </h2>
-                    <p className='homepage-text'> Gana partidos y suma puntos. Cada partido importa: los puntos te posicionan en el ranking general del torneo.
-                    ¿Tu objetivo? ¡Terminar en lo más alto del ranking! </p>
-                    
-                </div>
-
-                <div className='homepage-buttons'>
-                    <button onClick={() => onNavigate('login')} className='homepage-btn'>Iniciar sesión</button>
-                    <button onClick={()=>onNavigate('register')} className='homepage-btn'> Registrate</button>
-                </div>
-
             </main>
-
-            <footer className="homepage-footer">
-                Contacto: Jessica Rubinos Rey
-            </footer>
-
+            <footer className="footer-bg">
+                <div className="footer-content">
+                    <div className="footer-logo">
+                            <img src={Logo}
+                            alt="PlayRanking" className="footer-logo-img" />
+                    </div>
+                    <div className="footer-links">
+                                    
+                        <a href="/privacidad">Política de privacidad</a>
+                        <a href="/cookies">Política de cookies</a>
+                        <a href="/Contact" 
+                        onClick={e=> {e.preventDefault(); onNavigate(Contact)}}>Contacto</a>
+                
+                     </div>
+                </div>
+                <div className="footer-divider"></div>
+                <div className="footer-copy">
+                © PlayRanking 2025
+                <div className="footer-note">
+                    PlayRanking es una plataforma para gestionar rankings y torneos de pádel entre amigos y clubes.<br />
+                    Para dudas o contacto, escribe a: playrankingpadel@gmail.com
+                </div>
+                </div>
+  </footer>
         </div>
-    )
-    
+    );
 }
+export default HomePage;
 
-
-export default HomePage; 
+    
+ 
