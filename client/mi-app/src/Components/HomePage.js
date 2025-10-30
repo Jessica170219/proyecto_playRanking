@@ -1,17 +1,18 @@
 import React from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Images/logo-snfondo.png';
 import '../Stylesheets/HomePage.css';
-import Contact from "./Contact.js";
 
-const HomePage = ({ onNavigate }) => {
+const HomePage = () => {
+    const navigate = useNavigate();
     return (
 
         <div className="homepage">
             <nav className="homepage-nav">
                 <img src={Logo} alt="PlayRanking" className="nav-logo" />
                 <div className="nav-links">
-                    <button className="nav-btn" onClick={() => onNavigate('login')}>Iniciar sesión</button>
-                    <button className="nav-btn primary" onClick={() => onNavigate('register')}>Registrarse</button>
+                    <button className="nav-btn" onClick={() => navigate('/login')}>Iniciar sesión</button>
+                    <button className="nav-btn primary" onClick={() => navigate('/register')}>Registrarse</button>
                 </div>
             </nav>
 
@@ -24,8 +25,8 @@ const HomePage = ({ onNavigate }) => {
                     Organiza partidos, sigue tu progreso y asciende posiciones en el ranking de pádel, con PlayRanking. La plataforma donde cada partido suma.
                 </p>
                 <div className="hero-actions">
-                    <button className="hero-btn primary" onClick={() => onNavigate('register')}>Crear cuenta</button>
-                    <button className="hero-btn" onClick={() => onNavigate('login')}>Ver ranking</button>
+                    <button className="hero-btn primary" onClick={() => navigate('/register')}>Crear cuenta</button>
+                    <button className="hero-btn" onClick={() => navigate('/login')}>Ver ranking</button>
                 </div>
             </main>
             <footer className="footer-bg">
@@ -36,10 +37,10 @@ const HomePage = ({ onNavigate }) => {
                     </div>
                     <div className="footer-links">
                                     
-                        <a href="/privacidad">Política de privacidad</a>
-                        <a href="/cookies">Política de cookies</a>
-                        <a href="/Contact" 
-                        onClick={e=> {e.preventDefault(); onNavigate(Contact)}}>Contacto</a>
+                        <Link to='/privacity' target='_blank' rel="noopener noreferrer"> Política de privacidad </Link>
+                        <Link to='/cookies' target='_blank' rel="noopener noreferrer"> Cookies</Link>
+                        <Link to='/contact' target='_blank' rel="noopener noreferrer"> Contacto</Link>
+                        @PlayRanking
                 
                      </div>
                 </div>

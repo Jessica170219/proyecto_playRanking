@@ -1,33 +1,33 @@
 import { React, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './Components/HomePage.js';
 import Login from './Components/Login.js';
 import Register from './Components/Register.js';
 import ForgotPassword from './Components/ForgotPassword.js';
 import Contact from './Components/Contact.js';
+import Cookies from './Components/Cookies.js';
+import Privacity from './Components/Privacity.js';
 
 
 
 function App() {
 
-  const [page, setPage] = useState('home'); //Estado que indica la pagina inicial 
-
-  const handleNavigate = (pageName) => {
-    setPage(pageName);
-  }
-
-  return (
-    <div>
-      {page === "home" && <HomePage onNavigate={handleNavigate} />}
-      {page === "login" && <Login onNavigate={handleNavigate} />}
-      {page ==="register" && <Register onNavigate={handleNavigate} />}
-      {page ==="forgotpassword" && <ForgotPassword onNavigate={handleNavigate} />}
-      {page ==="Contact" && <Contact onNavigate={handleNavigate} />}
-
-
-    </div>
-   
   
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path='/cookies' element={<Cookies />} />
+      <Route path='/privacity' element={<Privacity />} />
+    </Routes>
+
+
+    
+   
   );
 }
 

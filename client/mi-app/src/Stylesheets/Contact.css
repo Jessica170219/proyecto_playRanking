@@ -1,0 +1,63 @@
+.contact-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  width: 100vw;  
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.contact-container{
+    max-width: 600px;
+    width:100%;
+    padding:30px 30px;
+    border-radius:10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+    line-height: 1.6;
+}
+
+.contact-title{
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+}
+
+/*Estilo del formulario*/
+.contact-form{
+    display:flex;
+    flex-direction: column;
+    gap:35px;
+    align-items: center;
+}
+
+.form-textarea{
+  padding: 12px 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.form-textarea:focus{
+  border-color: #64a2fc;
+  outline: none;
+}
+
+.success-message {
+  margin-top: 15px;
+  color: green;
+  font-weight: 600;
+  text-align: center;
+}
+
+.error-message {
+  margin-top: 15px;
+  color: red;
+  font-weight: 600;
+  text-align: center;
+}

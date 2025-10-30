@@ -1,11 +1,13 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import '../Stylesheets/Login.css';
-import Ilustracion from '../Images/ilustracion-padel.jpg';
+import Ilustracion from '../Images/ilustracionpadel.png';
 import { validarEmail } from "../Utils/validations"; 
-import ForgotPassword from "./ForgotPassword.js";
 
 
-const Login = ({ onNavigate }) => {
+
+const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
 
@@ -49,18 +51,16 @@ const Login = ({ onNavigate }) => {
                   required
           />
             <div className='form-linea'>
-              <a href='/forgotpassword' className='form-link'
-                 onClick={e=>{e.preventDefault();
-                  onNavigate(ForgotPassword);
-                 }}>¿Has olvidado tu contraseña?</a>
+              <Link to='/forgotpassword' target='_bank' rel="noopener noreferrer">¿Has olvidado la contraseña? </Link>
+              
             </div>
-             <button className='homepage-btn' type='submit'>Entrar</button>
+             <button className='homepage-btn' type='submit' onClick={()=>navigate('/dashboard')}>Entrar</button>
           </form>
 
           <div className='panel-register'>
                  ¿No tienes cuenta?
             <button
-            className='register-btn'  type='button' onClick={() => onNavigate('register')}>Regístrate</button>
+            className='register-btn'  type='button' onClick={() => navigate('/register')}>Regístrate</button>
       
           </div>
       

@@ -1,0 +1,5 @@
+REVISAR TODOS LOS COMPONENTES PARA PONER LOS LINKS Y METER ROUTER.!!!!
+
+-Pendiente: 
+    Realizar solicitud de olvidar contraseña.
+    

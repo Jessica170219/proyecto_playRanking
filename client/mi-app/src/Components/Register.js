@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import '../Stylesheets/Register.css';
 import '../Stylesheets/Login.css';
-import Ilustracion from '../Images/ilustracion-padel.jpg';
+import Ilustracion from '../Images/ilustracionpadel.png';
 import { validarContraseña,validarEmail,validarTelefono } from "../Utils/validations";
 
 

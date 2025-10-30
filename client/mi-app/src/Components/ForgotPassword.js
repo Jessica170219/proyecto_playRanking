@@ -1,11 +1,13 @@
 import {React,useState} from"react";
 import '../Stylesheets/ForgotPassword.css'; 
 import '../Stylesheets/HomePage.css';
+import { useNavigate } from 'react-router-dom';
 
-const ForgotPassword = ({ onNavigate }) => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState(''); 
   const [message,setMessage]=useState(''); 
-  const [error,setError]=useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   
   const handleSubmit= e =>{
@@ -17,8 +19,10 @@ const ForgotPassword = ({ onNavigate }) => {
 
     try{
 
-      //PENDIENTE DE IMPLEMENTAR LLAMADA A BACKEND 
+      //PENDIENTE DE IMPLEMENTAR LLAMADA A BACKEND
 
+      
+      navigate('/login'); //Volvemos a la pagina de login al enviar la solicitud 
 
     }catch(err){
       setError('Error al enviar el email de reseteo de contraseña');
@@ -26,7 +30,8 @@ const ForgotPassword = ({ onNavigate }) => {
   };
 
   return (
-    <div className='form-container'>
+    <main className='fp-main'>
+      <div className='form-container'>
       <h2 className='forgot-title'>Recuperar contraseña</h2>
       <form className='form-forgot' onSubmit={handleSubmit}>
         <input
@@ -43,6 +48,9 @@ const ForgotPassword = ({ onNavigate }) => {
       {error && <p className='error-message'>{error}</p>}     
 
     </div>
+
+    </main>
+    
   );
 
 

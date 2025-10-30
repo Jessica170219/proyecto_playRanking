@@ -5,7 +5,6 @@
 .register-panel{
    flex:1 1 50%;
    order:2;
-  background: #F9FAFB;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,7 +70,6 @@
 }
 
 .register-imagen{
-   background: #f7f7fa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,53 +87,89 @@
    
 }
 
+/*Responsivo para tablets*/ 
+.register-panel, .register-imagen {
+    flex: 1 1 100%;
+    width: 100%;
+    min-height: 250px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    order: unset;
+    padding: 0 10px;
+  }
+  .register-content {
+    max-width: 95vw;
+    margin-top: 25px;
+    padding: 0 8px;
+  }
+  .register-imagen img {
+    max-width: 350px;
+    margin: 0 auto;
+    max-height: 35vh;
+  }
+
+
 
 /*Responsivo para moviles*/
 @media (max-width: 600px) {
-  .container {
-    flex-direction: column;
-    min-height: auto;
-    width: 100vw;
-    padding: 20px 10px;
+  .form-register{
+    padding:10px 10px 10px 10px;
+    width: 90%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
   }
 
-  .register-panel {
+  .register-panel, .register-imagen {
     flex: 1 1 100%;
     width: 100%;
+    min-height: unset;
+    height: auto;
     padding: 0;
   }
-  .register-title{
-    font-size: 1.5rem;
+  .register-panel {
+    order: 1;
   }
+  .register-imagen {
+    order: 2;
+    margin-bottom: 15px;
+    margin-top:15px;
+  }
+.register-title {
+    font-size: 1.4rem;
+    margin: 150px 0 8px 0;
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+   .panel-text {
+    font-size: 0.98rem;
+    margin-bottom: 14px;
+    text-align: center;
+  
+  }
+
 
   .register-content {
-    max-width: 100%;
-    width: 100%;
-    margin-top: 20px;
-    padding: 0 15px;
-  }
-
-  
-  .form-input {
-    min-width: 100%;
-    padding: 12px 15px;
-    font-size: 1rem;
-  }
-
-  .login.imagen {
-    display: none; 
-  }
-
-  .homepage-btn {
-    padding: 12px 20px;
-    font-size: 1rem;
-    margin: 0;
-  }
-
-  .panel-register {
-    font-size: 0.9rem;
+    max-width: 100vw;
+    margin-top: 16px;
+    padding: 0 5vw;
+    box-sizing: border-box;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    align-items: center;
+  }
+
+  .form-input{
+    padding: 12px 20px;
+    display: block;
+    width: 90%;
+    align-items: center;
+  }
+  .register-imagen img {
+    width: 90vw;
+    max-width: 330px;
+    max-height: 25vh;
+    margin: 0 auto 6px auto;
   }
 }
