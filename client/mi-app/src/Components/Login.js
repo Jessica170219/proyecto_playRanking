@@ -54,7 +54,7 @@ const Login = () => {
               <Link to='/forgotpassword' target='_bank' rel="noopener noreferrer">¿Has olvidado la contraseña? </Link>
               
             </div>
-             <button className='homepage-btn' type='submit' onClick={()=>navigate('/dashboard')}>Entrar</button>
+             <button className='homepage-btn' type='submit' onClick={()=>navigate('/userDashBoard')}>Entrar</button>
           </form>
 
           <div className='panel-register'>

@@ -8,6 +8,7 @@ import ForgotPassword from './Components/ForgotPassword.js';
 import Contact from './Components/Contact.js';
 import Cookies from './Components/Cookies.js';
 import Privacity from './Components/Privacity.js';
+import UserDashBoard from './Components/DashBoard/UserDashBoard.js';
 
 
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path='/cookies' element={<Cookies />} />
       <Route path='/privacity' element={<Privacity />} />
+      <Route path='/userDashBoard' element={<UserDashBoard />} />
     </Routes>
 
 

@@ -1,4 +1,5 @@
 import react, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import '../Stylesheets/Register.css';
 import '../Stylesheets/Login.css';
 import Ilustracion from '../Images/ilustracionpadel.png';
@@ -6,7 +7,7 @@ import { validarContraseña,validarEmail,validarTelefono } from "../Utils/valida
 
 
 
-const Register = ({ onNavigate }) => {
+const Register = () => {
     const [nombre, setNombre] = useState(''); 
     const [apellido, setApellido] = useState(''); 
     const [email, setEmail] = useState(''); 
@@ -14,7 +15,7 @@ const Register = ({ onNavigate }) => {
     const [confContraseña, setConfContraseña] = useState(''); 
     const [telefono, setTelefono] = useState('');
     const [registroExitoso, setRegistroExitoso] = useState(false);
-
+    const navigate = useNavigate();
     
     //Funcion handleRegister
     const handleRegister = e => {
@@ -50,7 +51,7 @@ const Register = ({ onNavigate }) => {
               <div className='register-content'>
               <h2 className='register-title'>Registro completado</h2>
               <p className='panel-text'>Ya puedes iniciar sesión con tu cuenta.</p>
-              <button className="homepage-btn" onClick={() => onNavigate('login')}>Iniciar sesión</button>
+              <button className="homepage-btn" onClick={() => navigate('/login')}>Iniciar sesión</button>
             </div>
             </div>
           );
@@ -122,7 +123,7 @@ const Register = ({ onNavigate }) => {
             ¿Ya tienes cuenta?
             <button className='login-btn'
                       type='button'
-                      onClick={() => onNavigate('login')}>Iniciar sesión</button>
+                      onClick={() => navigate('/login')}>Iniciar sesión</button>
         </div>
           
 
