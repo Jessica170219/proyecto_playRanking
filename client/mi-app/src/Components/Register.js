@@ -1,5 +1,5 @@
-import react, { useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import '../Stylesheets/Register.css';
 import '../Stylesheets/Login.css';
 import Ilustracion from '../Images/ilustracionpadel.png';
@@ -18,7 +18,7 @@ const Register = () => {
     const navigate = useNavigate();
     
     //Funcion handleRegister
-    const handleRegister = e => {
+    const handleRegister = async e => {
         e.preventDefault();
           //Validacion de email
         if (!validarEmail(email)) {
@@ -35,13 +35,28 @@ const Register = () => {
         if (!validarTelefono(telefono)) {
             alert('El número de teléfono no es válido');
             return; 
-        } 
+      } 
+      
+      //CONEXION CON BACKEND
 
-        //Si todo lo anterior es correcto, simulamos registro exitoso
-        setRegistroExitoso(true); 
-          
+      try {
+        const response = await fetch('http://localhost:4000/api/register',{
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, apellido, email, contraseña, telefono })
+        })
+        const data = await response.json();
+        
+        if (response.ok) {
+          setRegistroExitoso(true);
+        } else {
+          alert(data.message || 'Error al registrar usuario');
+        }
+      } catch (error) {
+        alert('Error en la conexion al servidor'); 
+      }
 
-        console.log('Registro: ', nombre, email, contraseña); //comprobamos que funcione 
+        
     }
 
     //Simulamos registro exitoso

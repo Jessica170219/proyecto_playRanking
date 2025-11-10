@@ -10,9 +10,10 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
+  const [error, setError] = useState('');
 
   //Funcion handleLogin
-  const handleLogin = e => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     //Validacion de email
@@ -22,7 +23,26 @@ const Login = () => {
             }
         
 
-    //AQUI VA LA VALIDACION Y LLAMADA AL BACKEND 
+    //CONEXION CON BACKEND
+    try {
+      const response = await fetch('http://localhost:4000/api/auth/login', {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email,contraseña})
+      })
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('token', data.token); //Guardamos token
+        navigate('/dashboard');
+      } else {
+        setError(data.message || 'Credenciales incorrectas');
+      }
+
+    } catch (error) {
+      setError('Error en la conexión con el servidor');
+    }
   }
 
   return (
@@ -54,8 +74,9 @@ const Login = () => {
               <Link to='/forgotpassword' target='_bank' rel="noopener noreferrer">¿Has olvidado la contraseña? </Link>
               
             </div>
-             <button className='homepage-btn' type='submit' onClick={()=>navigate('/userDashBoard')}>Entrar</button>
-          </form>
+             <button className='homepage-btn' type='submit'>Entrar</button>
+        </form>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
 
           <div className='panel-register'>
                  ¿No tienes cuenta?

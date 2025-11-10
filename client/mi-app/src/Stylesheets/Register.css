@@ -11,6 +11,12 @@
   align-items: center;
   
 }
+.form-container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
 .register-content{
    width: 100%;

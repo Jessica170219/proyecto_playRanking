@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors'); 
 const mongoose = require('mongoose'); 
 require('dotenv').config(); //Manjear variables de entorno
+ 
 
 
 const app = express(); 
@@ -29,10 +30,13 @@ mongoose.connect(MONGODB_URI, {
 app.get('/', (req, res) =>
     res.json({ message: 'Backend funcionando correctamente' })); 
 
+
 //Importacion de rutas 
 const userRoutes = require('./src/routes/userRoutes'); 
 app.use('/api', userRoutes); 
 
+const authRoutes = require('./src/routes/authRoutes');
+app.use('/api/auth', authRoutes);
 
 //Arrancar servidor
 
