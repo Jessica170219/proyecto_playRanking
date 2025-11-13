@@ -10,19 +10,31 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
 
   
-  const handleSubmit= e =>{
+  const handleSubmit= async (e) =>{
     e.preventDefault();
 
     setMessage('');
     setError('');
+
+    
     //AQUI VA LA LLAMADA AL BACKEND PARA RESETEAR LA CONTRASEÑA
 
-    try{
+    try {
+      const response = await fetch('http://localhost:4000/api/forgot-password', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }); 
 
-      //PENDIENTE DE IMPLEMENTAR LLAMADA A BACKEND
+      const data = await response.json();
 
+      if (response.ok) {
+        setMessage('Se ha enviado un email con instrucciones para restablecer tu contraseña');
+        setTimeout(() => navigate('/login'), 4000); //Redirigimos a login
       
-      navigate('/login'); //Volvemos a la pagina de login al enviar la solicitud 
+      } else {
+        setError(data.message || 'No se puedo enviar el email'); 
+      }
 
     }catch(err){
       setError('Error al enviar el email de reseteo de contraseña');

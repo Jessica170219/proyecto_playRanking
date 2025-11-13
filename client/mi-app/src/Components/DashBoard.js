@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import '../../Stylesheets/DashBoard/UserDashBoard.css';
+import '../Stylesheets/DashBoard.css';
 
 
 const UserDashBoard = () => {

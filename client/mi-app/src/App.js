@@ -8,7 +8,9 @@ import ForgotPassword from './Components/ForgotPassword.js';
 import Contact from './Components/Contact.js';
 import Cookies from './Components/Cookies.js';
 import Privacity from './Components/Privacity.js';
-import UserDashBoard from './Components/DashBoard/UserDashBoard.js';
+import DashBoard from './Components/DashBoard.js';
+import ResetPassword from './Components/reset-Password.js';
+import CookieConsent from './Components/bannerCookies.js';
 
 
 
@@ -16,6 +18,7 @@ function App() {
 
   
   return (
+    <>
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
@@ -24,9 +27,14 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path='/cookies' element={<Cookies />} />
       <Route path='/privacity' element={<Privacity />} />
-      <Route path='/userDashBoard' element={<UserDashBoard />} />
+      <Route path='/dashboard' element={<DashBoard />} />
+      <Route path='/reset-password/:token' element={<ResetPassword />} />
+     
     </Routes>
 
+     <CookieConsent />
+
+    </>
 
     
    
