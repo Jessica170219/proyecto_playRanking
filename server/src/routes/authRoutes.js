@@ -28,13 +28,20 @@ router.post('/login', async (req, res) => {
 
         //Generar TOKEN
         const token = jwt.sign(
-            { id: usuario._id, email: usuario.email },
+            { id: usuario._id, email: usuario.email, role:usuario.role },
             JWT_SECRET,
             { expiresIn: '1h' }
         );
 
-        //Responder con el token
-        res.json({ message: 'Login exitoso', token }); 
+        //Responder con el token,nombre,email y rol
+        res.json({
+            message: 'Login exitoso',
+            token,
+            nombre: usuario.nombre,
+            email: usuario.email,
+            role: usuario.role,
+            
+         }); 
 
     } catch (error) {
         console.log('Error en login:', error); 

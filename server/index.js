@@ -44,6 +44,12 @@ app.use('/api/forgot-password', forgotPassword);
 const resetPasswordRoutes = require('./src/routes/reset-password');
 app.use('/api/reset-password', resetPasswordRoutes);
 
+const sendMessage = require('./src/routes/send-message');
+app.use('/api/send-message', sendMessage); 
+
+const adminRanking = require('./src/routes/adminRanking'); 
+app.use('/api/rankings', adminRanking);
+
 
 //Arrancar servidor
 

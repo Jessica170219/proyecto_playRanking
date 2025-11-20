@@ -62,12 +62,12 @@ const Register = () => {
     //Simulamos registro exitoso
         if(registroExitoso){
           return(
-            <div className='form-container'>
+            <div className='form-register-success'>
               <div className='register-content'>
-              <h2 className='register-title'>Registro completado</h2>
-              <p className='panel-text'>Ya puedes iniciar sesión con tu cuenta.</p>
-              <button className="homepage-btn" onClick={() => navigate('/login')}>Iniciar sesión</button>
-            </div>
+                <h2 className='register-title'>Registro completado</h2>
+                <p className='panel-text'>Ya puedes iniciar sesión con tu cuenta.</p>
+                <button className="homepage-btn" onClick={() => navigate('/login')}>Iniciar sesión</button>
+              </div>
             </div>
           );
         }

@@ -12,7 +12,12 @@
   
 }
 
-
+.form-register-success{
+  display:flex; 
+  justify-content: center;
+  align-items: center;
+  
+}
 .register-content{
    width: 100%;
   max-width: 450px;

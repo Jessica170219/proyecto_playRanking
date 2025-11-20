@@ -4,46 +4,113 @@
   
 }
 
-.dashboard-nav {
-  width: 230px;
-  background: #fff;
-  border-right: 1px solid #eee;
+
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
   display: flex;
   flex-direction: column;
-  padding: 0 0 24px 0;
-  gap:15px;
+  padding: 24px 20px 14px 20px;
+  box-shadow: 2px 0 17px rgba(0,0,0,0.05);
 }
 
-.dashboard-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 32px 0 18px 32px;
-  letter-spacing: 1px;
-  color: #64a2fc;
-}
-
-.dashboard-nav ul {
-  list-style: none;
-  padding: 0 0 0 30px;
- 
-}
-
-.nav-item {
+.sidebar-header{
   display: flex;
   align-items: center;
-  gap: 30px;
-  color: #2c3457;
-  font-size: 1.1rem;
-  padding: 14px 0;
-  cursor: pointer;
-  border-left: 3px solid transparent;
-  transition: background 0.2s;
+  gap: 10px;
+  margin-bottom: 22px;
 }
-.nav-item.active, .nav-item:hover {
-  background: #64a2fc;
-  border-left: 3px solid #71709e;
+
+.sidebar-logo {
+  font-size: 2rem;
   font-weight: bold;
+  padding: 24px 16px;
+  
 }
+.sidebar-title{
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #4d536a;
+  letter-spacing: 0.03em;
+}
+
+.sidebar-menu {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: var(--sidebar-text-muted);
+  text-decoration: none;
+  font-size: 1.04rem;
+  font-weight: 500;
+  background: transparent;
+  transition: background .16s, color .16s;
+}
+
+.sidebar-link.active,
+.sidebar-link:hover {
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-primary);
+}
+
+.sidebar-link span {
+  font-size: 1.22rem;
+  opacity: 0.72;
+}
+
+.sidebar-profile {
+  margin-top: 100px;
+  border-top: 1px solid #efefef;
+  padding:18px 0 8px 0;
+}
+
+.sidebar-profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-username {
+  font-weight: 700;
+  font-size: 1.08rem;
+  color: var(--sidebar-primary);
+}
+
+.sidebar-email {
+  font-size: 0.97rem;
+  color: var(--sidebar-text-muted);
+}
+
+.logout-btn {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #444;
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 2px 0;
+  transition: color 0.12s, opacity 0.14s;
+}
+
+@media (max-width: 650px) {
+  .sidebar {
+    width: 98vw;
+    max-width: 380px;
+    min-width: 0;
+    padding: 17px 7px 7px 7px;
+  }}
+
 
 .dashboard-main {
   flex: 1;
@@ -63,6 +130,7 @@
   box-shadow: 0 3px 18px 0 rgba(54,47,77,0.06);
   margin-bottom: 10px;
   padding: 20px 28px;
+  
 }
 
 .next-match-info,
@@ -95,17 +163,12 @@
   font-size: 1.3rem;
 }
 
-.logout-item{
-    margin-top: auto; 
-    margin-bottom: 22px; 
-    padding-left: 30px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    border-left: 3px solid transparent;
-    color: #9ea3b2;
+/*Estilos del dashboard del admin*/
+
+.ranking-activos-list{
+   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
 }
-.logout-item:hover {
-  background: #4d536a;
-  border-left: 3px solid black;
-}
+

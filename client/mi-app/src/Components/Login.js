@@ -35,7 +35,19 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem('token', data.token); //Guardamos token
-        navigate('/dashboard');
+        localStorage.setItem('user', JSON.stringify({
+          nombre: data.nombre,
+          email: data.email,
+          role: data.role,
+        }))
+
+        //Redirigimos según rol
+        if (data.role === 'admin') {
+          navigate('/admin-dashboard');
+        } else {
+          navigate('/dashboard');
+        }
+        
       } else {
         setError(data.message || 'Credenciales incorrectas');
       }

@@ -1,8 +1,7 @@
-import {React,useState} from "react";
+import {useState} from "react";
 import '../Stylesheets/Contact.css';
-import Logo from '../Images/logo-snfondo.png';
 import { validarEmail } from "../Utils/validations";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Contact=() => {
@@ -11,9 +10,9 @@ const Contact=() => {
     const [message, setMessage] = useState('');
     const [statusMessage, setStatusMessage] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate();
+   
 
-    const handleSubmit = e=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
         setStatusMessage('');
         setError(false);
@@ -24,8 +23,25 @@ const Contact=() => {
             return; 
         }   
 
+        //AQUI VA LA LLAMADA AL BACKEND
+    
         try {
-            //AQUI VA EL FORMULARIO AL BACKEND
+            const response = await fetch('http://localhost:4000/api/send-message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, email, message })
+            }); 
+
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor'); 
+            }
+
+            const data = await response.json();
+            setStatusMessage(data.message || 'Mensaje enviado correctamente'); 
+            setNombre(''); 
+            setEmail(''); 
+            setMessage(''); //vaciamos campos 
+            
         } catch {
             setStatusMessage('Error al enviar el mensaje. Por favor, intenta otra vez');
             setError(true);
