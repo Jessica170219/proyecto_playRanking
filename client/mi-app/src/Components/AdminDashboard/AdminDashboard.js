@@ -35,9 +35,8 @@ const AdminDashBoard = () => {
 
         <nav className="sidebar-menu">
           <a href="/admin-dashboard" className="sidebar-link active"><span>🏠</span> Home</a>
-          <a href="/admin/partidos" className="sidebar-link"><span>🏓</span> Partidos</a>
           <a href="/admin/rankings" className="sidebar-link"><span>⭐</span> Rankings</a>
-          <a href="/admin/gestion" className="sidebar-link"><span>⚙️</span> Gestión</a>
+          
         </nav>
 
         <div className='sidebar-profile'>
@@ -60,17 +59,6 @@ const AdminDashBoard = () => {
       <main className="dashboard-main">
         <section className='profile'>
           <h2>Hola, {nombre}. (Administrador)</h2>
-        </section>
-
-        {/* Próximos partidos programados */}
-        <section className="next-match-card admin-matches-card">
-          <h2>Próximos partidos programados</h2>
-          <div className="next-match-info">
-            <div>Partidos esta semana: <strong>12</strong></div>
-            <div>Pendientes de resultado: <strong>3</strong></div>
-            <div>Ranking activo: <strong>Enero 2025</strong></div>
-            <button className="btn-edit-match">Gestionar partidos</button>
-          </div>
         </section>
 
         {/* Rankings activos */}

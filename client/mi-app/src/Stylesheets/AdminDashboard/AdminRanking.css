@@ -103,7 +103,16 @@ El sidebar ya viene heredado de los estilos del dashboard*/
 .btn-green:hover {
   background: #f8bb30;
 }
+.ranking-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.botonera{
+  display:flex;
+  gap:12px;
+}
 /*Estilos de boton de eliminar*/ 
 .btn-delete {
   background: #f14949;
@@ -113,6 +122,7 @@ El sidebar ya viene heredado de los estilos del dashboard*/
   cursor: pointer;
   color: #fff;
   font-weight: 600;
+  
 
 }
 
@@ -126,4 +136,5 @@ El sidebar ya viene heredado de los estilos del dashboard*/
   cursor: pointer;
   color: #4d536a;
   font-weight: 600;
+ 
 }

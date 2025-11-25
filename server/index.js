@@ -50,6 +50,15 @@ app.use('/api/send-message', sendMessage);
 const adminRanking = require('./src/routes/adminRanking'); 
 app.use('/api/rankings', adminRanking);
 
+const usuarios = require('./src/routes/usuarios');
+app.use('/api/usuarios', usuarios);
+
+const parejas = require('./src/routes/parejas');
+app.use('/api/parejas', parejas); 
+
+
+const partidos = require('./src/routes/partidos');
+app.use('/api/partidos', partidos);
 
 //Arrancar servidor
 

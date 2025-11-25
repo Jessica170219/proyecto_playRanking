@@ -1,6 +1,8 @@
 const express = require('express'); 
 const router = express.Router(); 
 const Ranking = require('../models/Ranking'); 
+const Pareja = require('../models/Pareja');
+const Partido = require('../models/Partido');
 const { validacionCrearRanking } = require('../utils/validationRules');
 const { validationResult } = require('express-validator'); 
 
@@ -17,6 +19,20 @@ router.get('/', async (req, res) => {
         console.log('Error al obtener rankings: ', error); 
         res.status(500).json({ message: 'Error en el servidor' }); 
     }
+})
+
+//Obtener solo un ranking por Id
+router.get('/:id', async (req, res) => {
+  try {
+    const ranking = await Ranking.findById(req.params.id);
+    if (!ranking) {
+      return res.status(500).json({ message: 'Ranking no encontrado por Id' }); 
+    }
+
+    res.json(ranking); 
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener el ranking' }); 
+  }
 })
 
 
@@ -52,12 +68,22 @@ try {
 }); 
 
 
-//Eliminar ranking
+//Eliminar ranking, parejas y partidos creados
+
 
 router.delete('/:id', async (req, res) => {
   try {
+    //Borrar ranking
     await Ranking.findByIdAndDelete(req.params.id); 
-    res.status(200).json({ message: 'Ranking eliminado' }); 
+
+    //borrar parejas
+    await Pareja.deleteMany({ ranking: req.params.id });
+
+    //borrar partidos
+    await Partido.deleteMany({ ranking: req.params.id }); 
+    
+    
+    res.status(200).json({ message: 'Ranking y datos relacionados eliminados' }); 
   } catch (error) {
     res.status(500).json({ message: 'Error al eliminar el ranking' });
   }

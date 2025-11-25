@@ -124,9 +124,8 @@ const AdminRanking = () => {
 
               <nav className="sidebar-menu">
                 <a href="/admin-dashboard" className="sidebar-link active"><span>🏠</span> Home</a>
-                <a href="/admin/partidos" className="sidebar-link"><span>🏓</span> Partidos</a>
                 <a href="/admin/rankings" className="sidebar-link"><span>⭐</span> Rankings</a>
-                <a href="/admin/gestion" className="sidebar-link"><span>⚙️</span> Gestión</a>
+                
               </nav>
 
               <div className='sidebar-profile'>
@@ -161,7 +160,7 @@ const AdminRanking = () => {
                   <span>
                     <strong>{r.nombreRanking}</strong> — {r.parejas} parejas — {r.estado}
                   </span>
-                  <div>
+                  <div className='botonera'>
                     <button className='btn-modify'
                       onClick={()=> navigate(`/admin/rankings/${r._id || r.id}`)}>Modificar</button>
                     <button className='btn-delete'

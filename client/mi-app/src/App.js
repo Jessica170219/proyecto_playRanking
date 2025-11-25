@@ -13,6 +13,7 @@ import ResetPassword from './Components/reset-Password.js';
 import CookieConsent from './Components/bannerCookies.js';
 import AdminDashBoard from './Components/AdminDashboard/AdminDashboard.js';
 import AdminRanking from './Components/AdminDashboard/AdminRanking.js';
+import Rankingestion from './Components/AdminDashboard/RankingGestion.js';
 
 
 
@@ -33,6 +34,7 @@ function App() {
       <Route path='/reset-password/:token' element={<ResetPassword />} />
       <Route path='/admin-dashboard' element={<AdminDashBoard />} />
         <Route path='/admin/rankings' element={<AdminRanking />} />
+        <Route path='/admin/rankings/:id' element={<Rankingestion />} />
         
 
 
