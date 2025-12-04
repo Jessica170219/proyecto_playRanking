@@ -21,6 +21,8 @@ const RankingGestion = () => {
   const [seleccionados, setSeleccionados] = useState([]);
   const [ranking, setRanking] = useState(null);
   const [partidos, setPartidos] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false); 
+  const [partidoActivo, setPartidoActivo] = useState(null); 
 
   useEffect(() => {
 
@@ -165,6 +167,62 @@ const RankingGestion = () => {
   }; 
 
 
+  //Funcion de añadir resultado
+
+  const handleResultado = async(partidoId) => {
+    setPartidoActivo(partidoId); 
+    setModalVisible(true);
+  }
+
+  function cerrarModal() {
+     setModalVisible(false);
+    setPartidoActivo(null);
+  }
+
+  //Funcion de guardarResultado
+
+  const guardarResultado = async (e) => {
+    e.preventDefault();
+
+    // Recoge los datos de los inputs del formulario
+    const l1 = parseInt(document.getElementsByName('l1')[0].value || 0);
+    const l2 = parseInt(document.getElementsByName('l2')[0].value || 0);
+    const l3 = document.getElementsByName('l3')[0].value;
+    const v1 = parseInt(document.getElementsByName('v1')[0].value || 0);
+    const v2 = parseInt(document.getElementsByName('v2')[0].value || 0);
+    const v3 = document.getElementsByName('l3')[0].value;
+    
+    if (
+        isNaN(l1) || isNaN(l2) || isNaN(v1) || isNaN(v2)
+      ) {
+        alert('Debes completar los dos sets obligatorios para local y visitante');
+        return;
+    }
+    
+    let local = [l1, l2]; 
+    let visitante = [v1, v2]; 
+    if (l3 !== "" && v3 !== "") {
+      local.push(parseInt(l3));
+      visitante.push(parseInt(v3));
+    }
+
+    const resultado = { local, visitante }; 
+
+    const response = await fetch(`http://localhost:4000/api/partidos/${partidoActivo}/resultado`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ resultado })
+    });
+
+    if (response.ok) {
+      alert('Resultado guardado correctamente');
+      cerrarModal();
+      cargarPartidos();
+    } else {
+      alert('Error al guardar el resultado');
+    };
+  }
+
     return (
       <div className="dashboard-container">
         {/* Lateral igual al usuario normal */}
@@ -273,7 +331,16 @@ const RankingGestion = () => {
                         ' ' +
                         new Date(p.fecha).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                         : ''}
-                     <div className='botonera'> 
+                      
+                      
+
+                      {/*Botones*/}
+
+                      <div className='botonera'> 
+                        <button
+                          className='btn-resultado' onClick={() => handleResultado(p._id)}>
+                          {p.resultado && p.resultado.local?.length >=2 && p.resultado.visitante?.length >=2 ? `L: ${p.resultado.local.join('-')} | V: ${p.resultado.visitante.join('-')}`: 'Añadir resultado'}
+                      </button>
                       <button
                           className="btn-delete"
                           onClick={() => handleEliminarPartido(p._id)}
@@ -287,6 +354,42 @@ const RankingGestion = () => {
                 
             )}
             </section>
+
+            {/*Modal del resultado*/}
+            {modalVisible && (
+              <div className="modal-resultado">
+                <div className="ventana-resultado">
+                  <h4>Resultado</h4>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>TOTAL</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>L</td>
+                        <td><input type="number" min="0" name="l1" /></td>
+                        <td><input type="number" min="0" name="l2" /></td>
+                        <td><input type="number" min="0" name="l3" /></td>
+                      </tr>
+                      <tr>
+                        <td>V</td>
+                        <td><input type="number" min="0" name="v1" /></td>
+                        <td><input type="number" min="0" name="v2" /></td>
+                        <td><input type="number" min="0" name="v3" /></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button className="btn-añadir" onClick={guardarResultado}>Guardar</button>
+                  <button className="btn-cerrar" onClick={cerrarModal}>Cerrar</button>
+                </div>
+             </div>
+)}
+
 
               
           </div>

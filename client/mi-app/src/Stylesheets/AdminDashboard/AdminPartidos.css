@@ -68,6 +68,15 @@ ul li input[type="checkbox"] {
   justify-content: space-between;
   align-items: center;
 }
+.btn-resultado{
+  background: #71709e;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 14px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+}
 
 /*Estilos del grid*/
 .usuarios-grid {
@@ -101,4 +110,115 @@ ul li input[type="checkbox"] {
   accent-color: #3066be;
   width: 20px;
   height: 20px;
+}
+
+/*Estilos del modal*/
+
+.modal-resultado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.ventana-resultado {
+  background: #fafafa;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(40,40,77,0.15);
+  min-width: 320px;
+  max-width: 98vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Título */
+.ventana-resultado h4 {
+  margin: 0 0 1rem 0;
+  font-weight: bold;
+  color: #343465;
+  font-size: 1.18rem;
+}
+
+/* Tabla de sets */
+.ventana-resultado table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.ventana-resultado th,
+.ventana-resultado td {
+  padding: 0.5rem 1.2rem;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+.ventana-resultado th {
+  color: #65678D;
+  background: #f8f8fa;
+  font-size: 1.02rem;
+}
+
+.ventana-resultado td:first-child {
+  font-weight: bold;
+  color: #7367F0;
+}
+
+.ventana-resultado input[type="number"] {
+  width: 45px;
+  padding: 0.2rem 0.1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  text-align: center;
+  outline: none;
+}
+
+/* Botones */
+.btn-añadir, .btn-cerrar {
+  margin: 1rem 0.3rem 0 0.3rem;
+  padding: 0.42rem 1.12rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-añadir {
+  background: #afd024;
+  color: #fafafa;
+  transition: background 0.2s;
+}
+
+.btn-añadir:hover {
+  background: #afd024;
+}
+
+.btn-cerrar {
+  background: #FF3232;
+  color: #fafafa;
+  transition: background 0.2s;
+}
+
+.btn-cerrar:hover {
+  background: #dd1e1e;
+}
+
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .ventana-resultado {
+    padding: 1.2rem 0.3rem;
+    min-width: 225px;
+  }
+  .ventana-resultado table th, .ventana-resultado table td {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.92rem;
+  }
 }

@@ -19,6 +19,10 @@ const PartidoSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ranking',
         required: true,
+    },
+    resultado: {
+        local: [Number], 
+        visitante: [Number]
     }
 }); 
 

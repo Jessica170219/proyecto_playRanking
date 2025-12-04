@@ -10,3 +10,12 @@ Esta aplicación permite a los usuarios registrarse, iniciar sesión, y gestiona
 - React
 
 
+
+
+## Enlace a Trello (temporalización)
+https://trello.com/b/oIqrVww7
+
+
+## Enlace a GituHub (proyecto) 
+https://github.com/Jessica170219/proyecto_playRanking.git
+

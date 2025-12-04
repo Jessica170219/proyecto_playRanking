@@ -14,6 +14,7 @@ import CookieConsent from './Components/bannerCookies.js';
 import AdminDashBoard from './Components/AdminDashboard/AdminDashboard.js';
 import AdminRanking from './Components/AdminDashboard/AdminRanking.js';
 import Rankingestion from './Components/AdminDashboard/RankingGestion.js';
+import UserProfile from './Components/UserDashboard/Userprofile.js';
 
 
 
@@ -33,17 +34,14 @@ function App() {
       <Route path='/dashboard' element={<DashBoard />} />
       <Route path='/reset-password/:token' element={<ResetPassword />} />
       <Route path='/admin-dashboard' element={<AdminDashBoard />} />
-        <Route path='/admin/rankings' element={<AdminRanking />} />
-        <Route path='/admin/rankings/:id' element={<Rankingestion />} />
+      <Route path='/admin/rankings' element={<AdminRanking />} />
+      <Route path='/admin/rankings/:id' element={<Rankingestion />} />
+      <Route path ='/perfil' element={<UserProfile />} />
         
-
-
-
-        
-      </Routes>
+    </Routes>
      
 
-     <CookieConsent />
+    <CookieConsent />
 
     </>
 

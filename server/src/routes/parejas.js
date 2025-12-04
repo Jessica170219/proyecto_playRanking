@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/User'); 
 const Pareja = require('../models/Pareja'); 
 
-//Obtener todas las parejas de un ranking
+//Obtener todas las parejas de un ranking (administrador)
 router.get('/rankings/:rankingId', async (req, res) => {
     try {
         const parejas = await Pareja.find({ ranking: req.params.rankingId }).populate('usuarios');
@@ -18,6 +18,22 @@ router.get('/rankings/:rankingId', async (req, res) => {
         res.status(500).json({ message: 'Error al listar parejas' }); 
     }
 })
+
+//Obtener la pareja de un usuario en concreto (Usuarios normales)
+router.get('/usuario/:usuarioId', async (req, res) => {
+    try{
+        const pareja = await Pareja.findOne({ usuarios: req.params.usuarioId }); 
+        if (!pareja){
+            return res.status(404).json({message: 'El usuairo no esá en ninguna pareja'});
+        }
+        res.json(pareja);
+    } catch (error){
+        res.status(500).json({ message: 'Error al obtener la pareja del usuario' });        
+    }
+});
+
+
+
 
 //Crear una pareja 
 router.post('/', async (req, res) => {

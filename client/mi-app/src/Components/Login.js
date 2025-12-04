@@ -36,6 +36,7 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem('token', data.token); //Guardamos token
         localStorage.setItem('user', JSON.stringify({
+          _id: data._id,
           nombre: data.nombre,
           email: data.email,
           role: data.role,

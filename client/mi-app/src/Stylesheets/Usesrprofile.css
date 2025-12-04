@@ -1,0 +1,94 @@
+/**Heredamos los estilos para el sidebar, 
+este archivo es para los estilos del perfil del usuario normal*/ 
+.dashboard-main{
+    flex: 1; 
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column; 
+}
+.profile-card {
+  flex:1;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 18px 0 rgba(54,47,77,0.06);
+  margin-bottom: 10px;
+  padding: 20px 28px;
+}
+
+/* Título */
+.profile-card h2 {
+  margin-bottom: 50px;
+  font-size: 1.6rem;
+}
+
+
+/* Modo resumen */
+.profile-summary p {
+  margin: 25px 0;
+  
+}
+
+.profile-summary strong {
+  font-weight: 600;
+}
+
+/* Botón editar */
+.profile-summary button {
+  background: #AFD024;
+  color: #4D536A;
+  border: none;
+  border-radius: 8px;
+  margin-top:10px;
+  padding: 10px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.profile-summary button:hover{
+     background: #f8bb30;
+}
+
+/* Formulario de edición */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+.profile-form input {
+  font-size: 1.1rem;
+  margin-top: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+/* Botones del formulario */
+.profile-form button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-form button[type="submit"] {
+  background: #AFD024;
+  color: #fff;
+}
+
+.profile-form button[type="button"] {
+  background: #71709e;
+  color: #fff;
+  
+}
+
+
+
