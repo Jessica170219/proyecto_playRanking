@@ -119,7 +119,6 @@ const UserProfile = () => {
           
         <nav className="sidebar-menu">
               <Link to="/dashboard" className="sidebar-link active"><span>🏠</span> Home</Link>
-              <Link to="/calendario" className="sidebar-link active"><span>📅</span> Calendario</Link>
               <Link to="/perfil" className="sidebar-link"><span>👤</span> Perfil</Link>
           </nav>
           

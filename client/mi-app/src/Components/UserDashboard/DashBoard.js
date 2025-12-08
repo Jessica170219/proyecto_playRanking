@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import '../../Stylesheets/DashBoard.css';
-
+//Importamos FullCalendar
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
 const UserDashBoard = () => {
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ const UserDashBoard = () => {
   const [ranking, setRanking] = useState(null); 
   const [partidos, setPartidos] = useState([]);
   const [parejaUsuarioId, setParejaUsuarioId] = useState(null);
+  const [calendarEvents, setCalendarEvents] = useState([]);
   
 
   useEffect(() => {
@@ -71,6 +75,17 @@ const UserDashBoard = () => {
             const partidosData = await res.json();
             setPartidos(partidosData);
             
+            //Pasamos los partidos al formato de eventos para el calendario
+            const eventos = partidosData.map((partido) => ({
+              id: partido._id,
+             title: `${partido.pareja1.nombres?.join(" y ") || partido.pareja1.usuarios.map(u => u.nombre).join(" y ")} vs ${partido.pareja2.nombres?.join(" y ") || partido.pareja2.usuarios.map(u => u.nombre).join(" y ")}`,
+            start: new Date(partido.fecha),
+             // Duración típica de partido de pádel: 90 minutos
+             end: new Date(new Date(partido.fecha).getTime() + 90 * 60 * 1000),
+            }));
+            setCalendarEvents(eventos);
+
+
           }catch (error){
             console.error('Error al obtener los partidos del usuario:', error);
           }
@@ -79,6 +94,10 @@ const UserDashBoard = () => {
         fetchPartidos();
       }, [usuarioId]);
 
+      //Manejador de click en evento del calendario
+      const handleEventClick = (clickInfo) => {
+        alert(`Partido: ${clickInfo.event.title}\nFecha: ${clickInfo.event.start.toLocaleString()}`);
+      };
 
       //CALCULO DE ESTADISTICAS BASICAS
       const partidosJugados = partidos.filter(
@@ -137,7 +156,6 @@ const UserDashBoard = () => {
           
           <nav className="sidebar-menu">
             <Link to="/dashboard" className="sidebar-link active"><span>🏠</span> Home</Link>
-            <Link to="/calendario" className="sidebar-link active"><span>📅</span> Calendario</Link>
              <Link to="/perfil" className="sidebar-link"><span>👤</span> Perfil</Link>
             </nav>
           
@@ -231,9 +249,26 @@ const UserDashBoard = () => {
 
        
         <section className="calendar-card">
-          <h2>Calendario</h2>
-          {/* Aquí iría un calendario react (react-calendar, fullcalendar o personalizado) */}
-          <div className="calendar-placeholder">[Calendario aquí]</div>
+          <h2>Calendario de partidos</h2>
+          <FullCalendar 
+            plugins={[ dayGridPlugin, timeGridPlugin]}
+            initialView="dayGridMonth"
+            events= {calendarEvents}
+            eventClick= {handleEventClick}
+            headerToolbar= {{
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek'
+            }}
+            height= 'auto'
+            locale='es'
+            buttonText ={{
+              today: 'Hoy',
+              month: 'Mes',
+              week: 'Semana'
+            }}
+            />
+           
         </section>
       </main>
     </div>

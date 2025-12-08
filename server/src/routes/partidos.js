@@ -3,6 +3,25 @@ const router = express.Router();
 const Partido = require('../models/Partido'); 
 const Pareja = require('../models/Pareja');
 
+//Obtener todos los partidos (administrador)
+router.get('/', async (req, res) => {
+    try {
+        const partidos = await Partido.find()
+            .sort({ fecha: 1 })
+            .populate({
+                path: 'pareja1',
+                populate: { path: 'usuarios' }
+        })
+            .populate({
+                path: 'pareja2',
+                populate: { path: 'usuarios' }
+            });
+        res.json(partidos); 
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error al obtener los partidos' }); 
+    }
+})
 
 
 //Obtener partidos (administrador)
