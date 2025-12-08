@@ -8,9 +8,10 @@ Esta aplicación permite a los usuarios registrarse, iniciar sesión, y gestiona
 - Express
 - MongoDB
 - React
-
-
-
+- Cors
+- Dotenv
+- JWT
+- 
 
 ## Enlace a Trello (temporalización)
 https://trello.com/b/oIqrVww7
